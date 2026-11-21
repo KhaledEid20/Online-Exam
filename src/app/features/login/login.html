@@ -1,26 +1,55 @@
-<section class="container flex min-h-screen items-center justify-center">
+<section class="mx-2 lg:mx-0 flex min-h-screen items-center justify-center">
     <div class="flex flex-col w-113 h-fit gap-4">
-        <h1 class="pb-6 text-[30px] font-bold">
+        <h1 class="pb-6 text-[30px] font-bold text-main-text-color">
             Login
         </h1>
         <form action>
             <div class="flex flex-col">
-                <div class="flex flex-col gap-2.5">
+                <div class="flex flex-col">
                     <mat-label
                         class="capitalize font-medium text-lg text-main-text-color">username</mat-label>
                     <mat-form-field class="example-full-width">
                         <input matInput placeholder="user123">
                     </mat-form-field>
+                    @if(false){
+                    <p class="text-red-600 text-[14px]">Your username is
+                        required</p>
+                    }
                 </div>
-                <div class="flex flex-col gap-2">
+                <div class="flex flex-col">
                     <mat-label
                         class="capitalize font-medium text-lg text-main-text-color">password</mat-label>
                     <mat-form-field class="example-full-width">
                         <input matInput type="password" placeholder="********">
                     </mat-form-field>
+                    @if(false){
+                    <p class="text-red-600 text-[14px]">Your password is
+                        required</p>
+                    }
                     <a
                         class="text-main-color text-end cursor-pointer hover:underline">Forgot
                         your password?</a>
+                </div>
+                <div class="p-6 flex flex-col gap-5">
+                    @if(false){
+                    <div
+                        class="error relative p-2.5 border border-red-600 bg-red-50 text-red-600 text-center font-normal text-[14px]">
+                        <p>Something went wrong</p>
+                        <span
+                            class="flex justify-center items-center bg-white rounded-full border-2 border-red-600 text-red-600 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <svg lucideX class="w-4.5 h-4.5">
+                            </svg>
+                        </span>
+                    </div>
+                    }
+                    <div>
+                    </div>
+                    <button type="submit"
+                        class="w-full cursor-pointer bg-main-color text-white p-3">Login</button>
+                    <p class="text-sec-text-color text-center">Don’t have an
+                        account? <a
+                            class="text-main-color cursor-pointer hover:underline">Create
+                            Yours</a></p>
                 </div>
             </div>
         </form>
