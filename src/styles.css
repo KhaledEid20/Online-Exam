@@ -1,1 +1,152 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+@theme{
+    --color-main-color : #155dfc;
+    --color-main-text-color : #1F2937;
+    --color-sec-text-color : #374151;
+}
+
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "Inter";
+}
+
+p , a , label{
+    font-family: "Geist Mono";
+}
+/* These tokens are generated using https://themes.angular-material.dev/ */
+/* Preview: https://themes.angular-material.dev/?bold-font-weight=700&brand-font-family=Roboto&medium-font-weight=500&plain-font-family=Roboto&regular-font-weight=400&seed-error=%23ffb4ab&seed-neutral=%23757682&seed-neutral-variant=%23737687&seed-primary=%23155dfc&seed-secondary=%23b6c4ff&seed-tertiary=%23f2afff */
+/* Seed Colors: primary: #155dfc, secondary: #b6c4ff, tertiary: #f2afff, error: #ffb4ab, neutral: #757682, neutral-variant: #737687 */
+/* Seed Typography: plain-font-family: Roboto, brand-font-family: Roboto, bold-font-weight: 700, medium-font-weight: 500, regular-font-weight: 400 */
+
+/* Make sure to import fonts in `<head>` of html */
+/*
+
+/* Light Theme */
+:root, :host {
+  --mat-sys-primary: #004fe4;
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: #dce1ff;
+  --mat-sys-on-primary-container: #00164e;
+  --mat-sys-inverse-primary: #b6c4ff;
+  --mat-sys-primary-fixed: #dce1ff;
+  --mat-sys-primary-fixed-dim: #b6c4ff;
+  --mat-sys-on-primary-fixed: #00164e;
+  --mat-sys-on-primary-fixed-variant: #003baf;
+  --mat-sys-secondary: #4e5c90;
+  --mat-sys-on-secondary: #ffffff;
+  --mat-sys-secondary-container: #dce1ff;
+  --mat-sys-on-secondary-container: #051749;
+  --mat-sys-secondary-fixed: #dce1ff;
+  --mat-sys-secondary-fixed-dim: #b6c4ff;
+  --mat-sys-on-secondary-fixed: #051749;
+  --mat-sys-on-secondary-fixed-variant: #364476;
+  --mat-sys-tertiary: #81488f;
+  --mat-sys-on-tertiary: #ffffff;
+  --mat-sys-tertiary-container: #fcd7ff;
+  --mat-sys-on-tertiary-container: #340043;
+  --mat-sys-tertiary-fixed: #fcd7ff;
+  --mat-sys-tertiary-fixed-dim: #f2afff;
+  --mat-sys-on-tertiary-fixed: #340043;
+  --mat-sys-on-tertiary-fixed-variant: #673075;
+  --mat-sys-background: #fcf8f9;
+  --mat-sys-on-background: #1c1b1c;
+  --mat-sys-surface: #fcf8f9;
+  --mat-sys-surface-dim: #dcd9da;
+  --mat-sys-surface-bright: #fcf8f9;
+  --mat-sys-surface-container-lowest: #ffffff;
+  --mat-sys-surface-container-low: #f6f3f3;
+  --mat-sys-surface-container: #f1edee;
+  --mat-sys-surface-container-high: #ebe7e8;
+  --mat-sys-surface-container-highest: #e5e2e2;
+  --mat-sys-on-surface: #1c1b1c;
+  --mat-sys-shadow: #000000;
+  --mat-sys-scrim: #000000;
+  --mat-sys-surface-tint: #5c5e69;
+  --mat-sys-inverse-surface: #313031;
+  --mat-sys-inverse-on-surface: #f4f0f0;
+  --mat-sys-outline: #77767c;
+  --mat-sys-outline-variant: #c7c6cc;
+  --mat-sys-neutral: #787677;
+  --mat-sys-neutral10: #1c1b1c;
+  --mat-sys-error: #ba1a1a;
+  --mat-sys-error-container: #ffdad6;
+  --mat-sys-on-error: #ffffff;
+  --mat-sys-on-error-container: #410002;
+  --mat-sys-surface-variant: #e3e1e8;
+  --mat-sys-on-surface-variant: #46464c;
+  --mat-sys-neutral-variant: #76767c;
+  --mat-sys-neutral-variant20: #2f3035;
+  --mat-sys-inverse-secondary: #b6c4ff;
+  --mat-sys-inverse-tertiary: #f2afff;
+}
+
+/* Dark Theme */
+.dark {
+  --mat-sys-primary: #b6c4ff;
+  --mat-sys-on-primary: #00287d;
+  --mat-sys-primary-container: #003baf;
+  --mat-sys-on-primary-container: #dce1ff;
+  --mat-sys-inverse-primary: #004fe4;
+  --mat-sys-primary-fixed: #dce1ff;
+  --mat-sys-primary-fixed-dim: #b6c4ff;
+  --mat-sys-on-primary-fixed: #00164e;
+  --mat-sys-on-primary-fixed-variant: #003baf;
+  --mat-sys-secondary: #b6c4ff;
+  --mat-sys-on-secondary: #1e2d5e;
+  --mat-sys-secondary-container: #364476;
+  --mat-sys-on-secondary-container: #dce1ff;
+  --mat-sys-secondary-fixed: #dce1ff;
+  --mat-sys-secondary-fixed-dim: #b6c4ff;
+  --mat-sys-on-secondary-fixed: #051749;
+  --mat-sys-on-secondary-fixed-variant: #364476;
+  --mat-sys-tertiary: #f2afff;
+  --mat-sys-on-tertiary: #4d175d;
+  --mat-sys-tertiary-container: #673075;
+  --mat-sys-on-tertiary-container: #fcd7ff;
+  --mat-sys-tertiary-fixed: #fcd7ff;
+  --mat-sys-tertiary-fixed-dim: #f2afff;
+  --mat-sys-on-tertiary-fixed: #340043;
+  --mat-sys-on-tertiary-fixed-variant: #673075;
+  --mat-sys-background: #131314;
+  --mat-sys-on-background: #e5e2e2;
+  --mat-sys-surface: #131314;
+  --mat-sys-surface-dim: #131314;
+  --mat-sys-surface-bright: #3a393a;
+  --mat-sys-surface-container-lowest: #0e0e0f;
+  --mat-sys-surface-container-low: #1c1b1c;
+  --mat-sys-surface-container: #201f20;
+  --mat-sys-surface-container-high: #2a2a2a;
+  --mat-sys-surface-container-highest: #353435;
+  --mat-sys-on-surface: #e5e2e2;
+  --mat-sys-shadow: #000000;
+  --mat-sys-scrim: #000000;
+  --mat-sys-surface-tint: #c5c5d3;
+  --mat-sys-inverse-surface: #e5e2e2;
+  --mat-sys-inverse-on-surface: #313031;
+  --mat-sys-outline: #919096;
+  --mat-sys-outline-variant: #46464c;
+  --mat-sys-neutral: #787677;
+  --mat-sys-neutral10: #1c1b1c;
+  --mat-sys-error: #ffb4ab;
+  --mat-sys-error-container: #93000a;
+  --mat-sys-on-error: #690005;
+  --mat-sys-on-error-container: #ffdad6;
+  --mat-sys-surface-variant: #46464c;
+  --mat-sys-on-surface-variant: #c7c6cc;
+  --mat-sys-neutral-variant: #76767c;
+  --mat-sys-neutral-variant20: #2f3035;
+  --mat-sys-inverse-secondary: #4e5c90;
+  --mat-sys-inverse-tertiary: #81488f;
+}
+
+/* Typography */
+:root, :host {
+  --mat-sys-brand-font-family: Inter;
+  --mat-sys-plain-font-family: Inter;
+  --mat-sys-bold-font-weight: 700;
+  --mat-sys-medium-font-weight: 500;
+  --mat-sys-regular-font-weight: 400;
+}

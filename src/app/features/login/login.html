@@ -1,0 +1,28 @@
+<section class="container flex min-h-screen items-center justify-center">
+    <div class="flex flex-col w-113 h-fit gap-4">
+        <h1 class="pb-6 text-[30px] font-bold">
+            Login
+        </h1>
+        <form action>
+            <div class="flex flex-col">
+                <div class="flex flex-col gap-2.5">
+                    <mat-label
+                        class="capitalize font-medium text-lg text-main-text-color">username</mat-label>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="user123">
+                    </mat-form-field>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <mat-label
+                        class="capitalize font-medium text-lg text-main-text-color">password</mat-label>
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="password" placeholder="********">
+                    </mat-form-field>
+                    <a
+                        class="text-main-color text-end cursor-pointer hover:underline">Forgot
+                        your password?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

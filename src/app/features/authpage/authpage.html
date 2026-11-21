@@ -1,0 +1,79 @@
+<section class="flex h-screen">
+    <div
+        class="hidden lg:flex left w-1/2 h-full lg:py-20 lg:px-13 justify-center relative overflow-hidden">
+        <span
+            class="w-100 h-100 absolute bg-main-color top-0 left-162 rounded-full blur-3xl opacity-20"></span>
+        <span
+            class="w-150 h-150 absolute bg-main-color -bottom-104 right-104 rounded-full blur-3xl opacity-30 -z-10"></span>
+        <div class="flex flex-col justify-around h-full w-114.5 relative z-10">
+            <div class="flex gap-4 items-center h-fit text-main-color">
+                <div class="icon w-10 h-10 flex justify-center items-center">
+                    <svg lucideFolderCode></svg>
+                </div>
+                <h2 class="font-semibold text-[20px]">Exam
+                    App</h2>
+            </div>
+            <h1 class="font-bold text-[30px] text-center text-main-text-color">
+                Empower your learning journey with our smart exam platform.
+            </h1>
+            <ul class="flex gap-4 flex-col">
+                <li class="flex gap-9">
+                    <div
+                        class="icon p-2 flex justify-center items-center border-[1.5px] w-9 h-9 text-main-color">
+                        <svg lucideBrain
+                            [size]="24"></svg>
+                    </div>
+                    <div>
+                        <p
+                            class="text-[20px] font-semibold mb-2 text-main-color">Tailored
+                            Diplomas</p>
+                        <p
+                            class="text-[16px] font-normal text-sec-text-color">Choose
+                            from
+                            specialized tracks
+                            like <br> Frontend,
+                            Backend, and Mobile <br> Development.</p>
+                    </div>
+                </li>
+                <li class="flex gap-6">
+                    <div
+                        class="icon p-2 flex justify-center items-center border-[1.5px] w-9 h-9 text-main-color">
+                        <svg lucideBookOpenCheck
+                            [size]="24"></svg>
+                    </div>
+                    <div>
+                        <p
+                            class="text-[20px] font-semibold mb-2 text-main-color">Focused
+                            Exams</p>
+                        <p
+                            class="text-[16px] font-normal text-sec-text-color">Access
+                            topic-specific
+                            tests including<br> HTML, CSS, JavaScript, and
+                            more.</p>
+                    </div>
+                </li>
+                <li class="flex gap-6">
+                    <div
+                        class="icon p-2 flex justify-center items-center border-[1.5px] w-9 h-9 text-main-color">
+                        <svg lucideRectangleEllipsis
+                            [size]="24"></svg>
+                    </div>
+                    <div>
+                        <p
+                            class="text-[20px] font-semibold mb-2 text-main-color">Tailored
+                            Diplomas</p>
+                        <p
+                            class="text-[16px] font-normal text-sec-text-color">Choose
+                            from
+                            specialized tracks
+                            like <br> Frontend,
+                            Backend, and Mobile <br> Development.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right w-full lg:w-1/2 ">
+        <router-outlet></router-outlet>
+    </div>
+</section>
