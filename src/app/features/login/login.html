@@ -1,30 +1,42 @@
+@let form = loginForm;
+
 <section class="mx-2 lg:mx-0 flex min-h-screen items-center justify-center">
     <div class="flex flex-col w-113 h-fit gap-4">
         <h1 class="pb-6 text-[30px] font-bold text-main-text-color">
             Login
         </h1>
-        <form action>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
             <div class="flex flex-col">
                 <div class="flex flex-col">
                     <mat-label
-                        class="capitalize font-medium text-lg text-main-text-color">username</mat-label>
+                        class="capitalize font-medium text-lg text-main-text-color">Email</mat-label>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="user123">
+                        <input matInput formControlName="email"
+                            placeholder="user123@host.com"
+                            [class]="form.get('email')?.invalid && form.get('email')?.touched ? 'border-red-500' : 'border-slate-200'">
                     </mat-form-field>
-                    @if(false){
+                    @if(form.get('email')?.invalid &&
+                    form.get('email')?.touched){
+                    @if(form.get('email')?.hasError('required')){
                     <p class="text-red-600 text-[14px]">Your username is
                         required</p>
+                    }
                     }
                 </div>
                 <div class="flex flex-col">
                     <mat-label
                         class="capitalize font-medium text-lg text-main-text-color">password</mat-label>
                     <mat-form-field class="example-full-width">
-                        <input matInput type="password" placeholder="********">
+                        <input matInput type="password"
+                            formControlName="password" placeholder="********"
+                            [class]="form.get('password')?.invalid && form.get('password')?.touched ? 'border-red-500' : 'border-slate-200'">
                     </mat-form-field>
-                    @if(false){
+                    @if(form.get('password')?.invalid &&
+                    form.get('password')?.touched){
+                    @if(form.get('password')?.hasError('required')){
                     <p class="text-red-600 text-[14px]">Your password is
                         required</p>
+                    }
                     }
                     <a
                         class="text-main-color text-end cursor-pointer hover:underline">Forgot
@@ -48,6 +60,7 @@
                         class="w-full cursor-pointer bg-main-color text-white p-3">Login</button>
                     <p class="text-sec-text-color text-center">Don’t have an
                         account? <a
+                            [routerLink]="'/auth/register'"
                             class="text-main-color cursor-pointer hover:underline">Create
                             Yours</a></p>
                 </div>
