@@ -1,6 +1,16 @@
 <section
     class="mx-4 flex min-h-screen items-center justify-center py-10 lg:mx-0">
     <div class="flex w-full max-w-[28rem] flex-col">
+        <span
+            class="mb-5"
+            [class.hidden]="currentStep() === 1">
+            <button
+                class="flex justify-center items-center text-main-color cursor-pointer"
+                (click)="stepBack()">
+                <svg lucideChevronLeft></svg>
+                <p>back</p>
+            </button>
+        </span>
         <div class="mb-8 flex items-center" aria-label="Registration progress">
             @for (s of [1, 2, 3, 4]; track s) {
             <div class="flex items-center" [class.flex-1]="!$last">
@@ -32,7 +42,7 @@
             <mat-label
                 class="mb-2 text-sm font-medium text-main-text-color">Email
                 address</mat-label>
-            <mat-form-field class="w-full">
+            <mat-form-field class="w-full min-w-0">
                 <input matInput type="email" formControlName="email"
                     placeholder="user123@host.com" autocomplete="email">
             </mat-form-field>
@@ -48,7 +58,8 @@
             }
 
             <button type="button"
-                class="mt-4 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700">
+                class="mt-4 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+                (click)="nextStep(emailForm , 2)">
                 Continue
             </button>
         </form>
@@ -66,7 +77,18 @@
 
         <form [formGroup]="otpForm" class="flex flex-col">
             <ng-otp-input formControlName="otp"
-                [config]="{ length: 6 }"></ng-otp-input>
+                [config]="{ length: 6, inputStyles: { width: '48px', height: '48px' } }"></ng-otp-input>
+            @if (otpForm.get('otp')?.invalid &&
+            otpForm.get('otp')?.touched) {
+            @if (otpForm.get('otp')?.hasError('required') &&
+            otpForm.get('opt')?.touched) {
+            <p class="mt-2 text-sm text-red-600">The verification code is
+                required.</p>
+            } @else if (otpForm.get('otp')?.hasError('pattern')) {
+            <p class="mt-2 text-sm text-red-600">Enter the 6-digit
+                verification code.</p>
+            }
+            }
             <p class="mt-5 text-center text-sm text-sec-text-color">
                 Didn’t receive the code?
                 <button type="button"
@@ -75,7 +97,8 @@
                 </button>
             </p>
             <button type="button"
-                class="mt-6 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700">
+                class="mt-6 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+                (click)="nextStep(otpForm , 3)">
                 Verify email
             </button>
         </form>
@@ -89,7 +112,7 @@
                 you</h1>
         </div>
 
-        <form class="flex flex-col">
+        <form class="flex flex-col" [formGroup]="InfoFormal">
             <div class="grid grid-cols-1 gap-x-4 sm:grid-cols-2">
                 <div class="flex min-w-0 flex-col">
                     <mat-label
@@ -97,8 +120,13 @@
                         name<sup class="ml-0.5">*</sup></mat-label>
                     <mat-form-field class="w-full min-w-0">
                         <input matInput placeholder="Ahmed"
-                            autocomplete="given-name">
+                            formControlName="firstName">
                     </mat-form-field>
+                    @if (InfoFormal.get('firstName')?.invalid &&
+                    InfoFormal.get('firstName')?.touched) {
+                    <p class="-mt-4 mb-2 text-sm text-red-600">First name is
+                        required.</p>
+                    }
                 </div>
                 <div class="flex min-w-0 flex-col">
                     <mat-label
@@ -106,8 +134,13 @@
                         name<sup class="ml-0.5">*</sup></mat-label>
                     <mat-form-field class="w-full min-w-0">
                         <input matInput placeholder="Abdullah"
-                            autocomplete="family-name">
+                            formControlName="lastName">
                     </mat-form-field>
+                    @if (InfoFormal.get('LastName')?.invalid &&
+                    InfoFormal.get('LastName')?.touched) {
+                    <p class="-mt-4 mb-2 text-sm text-red-600">Last name is
+                        required.</p>
+                    }
                 </div>
             </div>
 
@@ -116,8 +149,13 @@
                     class="ml-0.5">*</sup></mat-label>
             <mat-form-field class="w-full min-w-0">
                 <input matInput placeholder="user123"
-                    autocomplete="username">
+                    formControlName="username">
             </mat-form-field>
+            @if (InfoFormal.get('Username')?.invalid &&
+            InfoFormal.get('Username')?.touched) {
+            <p class="-mt-4 mb-2 text-sm text-red-600">Username is
+                required.</p>
+            }
 
             <mat-label
                 class="mb-2 text-sm font-medium text-main-text-color">Phone</mat-label>
@@ -128,11 +166,17 @@
                     <span class="text-sm font-medium">EG(+20) &nbsp;⌁</span>
                 </span>
                 <input matInput type="tel" placeholder="1012345678"
-                    autocomplete="tel">
+                    formControlName="phone">
             </mat-form-field>
+            @if (InfoFormal.get('Phone')?.invalid &&
+            InfoFormal.get('Phone')?.touched) {
+            <p class="-mt-4 mb-2 text-sm text-red-600">Phone number is
+                required.</p>
+            }
 
             <button type="button"
-                class="mt-2 w-full cursor-pointer border border-main-color/40 bg-[#E8F0FF] px-4 py-3 font-medium text-main-color transition-colors hover:bg-blue-100">
+                class="mt-2 w-full cursor-pointer border border-main-color/40 bg-[#E8F0FF] px-4 py-3 font-medium text-main-color transition-colors hover:bg-blue-100"
+                (click)="nextStep(InfoFormal , 4)">
                 Next <span class="ml-1" aria-hidden="true">›</span>
             </button>
         </form>
@@ -148,14 +192,25 @@
             </p>
         </div>
 
-        <div class="flex flex-col">
+        <form [formGroup]="passwordForm" class="flex flex-col">
             <mat-label
                 class="mb-2 text-sm font-medium text-main-text-color">Password</mat-label>
             <mat-form-field class="w-full min-w-0">
                 <input matInput type="password"
                     placeholder="At least 8 characters"
-                    autocomplete="new-password">
+                    formControlName="password">
             </mat-form-field>
+            @if (passwordForm.get('password')?.invalid &&
+            passwordForm.get('password')?.touched) {
+            @if (passwordForm.get('password')?.hasError('required')) {
+            <p class="-mt-4 mb-2 text-sm text-red-600">Password is
+                required.</p>
+            } @else if (passwordForm.get('password')?.hasError('pattern')) {
+            <p class="-mt-4 mb-2 text-sm text-red-600">Password must be at
+                least 8 characters and include an uppercase letter and a
+                number.</p>
+            }
+            }
 
             <mat-label
                 class="mb-2 text-sm font-medium text-main-text-color">Confirm
@@ -163,14 +218,24 @@
             <mat-form-field class="w-full min-w-0">
                 <input matInput type="password"
                     placeholder="Re-enter your password"
-                    autocomplete="new-password">
+                    formControlName="rePassword">
             </mat-form-field>
+            @if (passwordForm.get('confirmPassword')?.invalid &&
+            passwordForm.get('confirmPassword')?.touched) {
+            <p class="-mt-4 mb-2 text-sm text-red-600">Please confirm your
+                password.</p>
+            } @else if (passwordForm.hasError('mismatch') &&
+            passwordForm.get('confirmPassword')?.touched) {
+            <p class="-mt-4 mb-2 text-sm text-red-600">Passwords do not
+                match.</p>
+            }
 
             <button type="button"
-                class="mt-2 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700">
+                class="mt-2 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+                (click)="CreateAccount()">
                 Create account
             </button>
-        </div>
+        </form>
         }
         }
     </div>

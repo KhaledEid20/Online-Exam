@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../Environments/environment';
-import { LoginResponse } from './interfaces/login-response';
+import { authError, LoginResponse } from './interfaces/login-response';
 
 @Service()
 export class AuthService {
@@ -10,5 +10,9 @@ export class AuthService {
 
     Login(data : any): Observable<LoginResponse> {
         return this._context.post<LoginResponse>(`${environment.baseUrl}/auth/signin`, data);
+    }
+
+    CreateAccount(data :any): Observable<LoginResponse>{
+        return this._context.post<LoginResponse>(`${environment.baseUrl}/auth/signup`, data);
     }
 }

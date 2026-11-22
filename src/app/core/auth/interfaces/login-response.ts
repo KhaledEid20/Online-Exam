@@ -16,3 +16,8 @@ export interface User {
     isVerified: boolean
     createdAt: string
 }
+
+export interface authError{
+    message:string
+    code: number
+}
