@@ -94,7 +94,7 @@ export class Register {
     if(this.currentStep() === 1){
       return;
     }
-    this.currentStep.update((s)=> (s-1) as 1 | 2 |3)
+    this.currentStep.update((s)=> (s-1) as 1 | 2 | 3)
     console.log("stepped back")
   }
 }

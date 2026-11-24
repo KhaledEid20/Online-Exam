@@ -15,4 +15,8 @@ export class AuthService {
     CreateAccount(data :any): Observable<LoginResponse>{
         return this._context.post<LoginResponse>(`${environment.baseUrl}/auth/signup`, data);
     }
+
+    resetPassword(data :any): Observable<any>{
+        return this._context.post<any>(`${environment.baseUrl}/auth/resetPassword`, data);
+    }
 }

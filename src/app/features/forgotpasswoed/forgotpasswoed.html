@@ -1,0 +1,155 @@
+<section
+    class="mx-4 flex min-h-screen items-center justify-center py-10 lg:mx-0">
+    <div class="flex w-full max-w-[28rem] flex-col">
+        <button
+            type="button"
+            class="mb-5 flex w-fit items-center gap-1 text-main-color cursor-pointer"
+            [class.hidden]="currentStep() === 1"
+            (click)="stepBack()">
+            <span aria-hidden="true">←</span>
+            <span>back</span>
+        </button>
+
+        <div class="mb-8 flex items-center"
+            aria-label="Password reset progress">
+            @for (s of [1, 2, 3]; track s) {
+            <div class="flex items-center" [class.flex-1]="!$last">
+                <span
+                    [class]="s <= currentStep() ? 'border-main-color bg-main-color' : 'border-[#C7D2FE] bg-white'"
+                    class="h-3 w-3 shrink-0 rotate-45 border-2"
+                    [attr.aria-current]="s === currentStep() ? 'step' : null"></span>
+                @if (!$last) {
+                <span
+                    [class]="s < currentStep() ? 'border-solid border-main-color' : 'border-dashed border-[#C7D2FE]'"
+                    class="mx-2 flex-1 border-t-2"></span>
+                }
+            </div>
+            }
+        </div>
+
+        @switch (currentStep()) {
+        @case (1) {
+        <div class="mb-7">
+            <p class="mb-2 text-sm font-medium text-main-color">STEP 1 OF 3</p>
+            <h1 class="text-[30px] font-bold text-main-text-color">Forgot
+                Password</h1>
+            <p class="mt-2 text-sm leading-6 text-sec-text-color">
+                Don't worry, we will help you recover your account.
+            </p>
+        </div>
+
+        <form class="flex flex-col" [formGroup]="email">
+            <label class="mb-2 text-sm font-medium text-main-text-color"
+                for="reset-email">
+                Email
+            </label>
+            <input
+                id="reset-email"
+                type="email"
+                formControllerName="email"
+                placeholder="user123@host.com"
+                class="h-12 w-full border border-[#E2E8F0] px-4 text-sm text-main-text-color outline-none transition-colors placeholder:text-[#98A2B3] focus:border-main-color">
+
+            <button
+                type="button"
+                class="mt-4 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+                (click)="goToStep(2)">
+                Next
+            </button>
+
+            <p class="mt-4 text-center text-sm text-sec-text-color">
+                Don’t have an account?
+                <a href="#"
+                    class="font-medium text-main-color hover:underline">Create
+                    yours</a>
+            </p>
+        </form>
+        }
+
+        @case (2) {
+        <div class="mb-7">
+            <p class="mb-2 text-sm font-medium text-main-color">STEP 2 OF 3</p>
+            <h1 class="text-[30px] font-bold text-main-text-color">Password
+                Reset Sent</h1>
+            <p class="mt-2 text-sm leading-6 text-sec-text-color">
+                We have sent a password reset link to your email address.
+            </p>
+        </div>
+
+        <div class="flex flex-col">
+            <p class="text-sm leading-6 text-sec-text-color">
+                Please check your inbox and follow the instructions to reset
+                your password.
+            </p>
+            <p class="mt-6 text-sm leading-6 text-sec-text-color">
+                If you don’t see the email within a few minutes, check your spam
+                or junk folder.
+            </p>
+
+            <button
+                type="button"
+                class="mt-7 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+                (click)="goToStep(3)">
+                Continue
+            </button>
+
+            <p class="mt-4 text-center text-sm text-sec-text-color">
+                Didn’t have an account?
+                <a href="#"
+                    class="font-medium text-main-color hover:underline">Create
+                    yours</a>
+            </p>
+        </div>
+        }
+
+        @case (3) {
+        <div class="mb-7">
+            <p class="mb-2 text-sm font-medium text-main-color">STEP 3 OF 3</p>
+            <h1 class="text-[30px] font-bold text-main-text-color">Create A New
+                Password</h1>
+            <p class="mt-2 text-sm leading-6 text-sec-text-color">
+                Create a new strong password for your account.
+            </p>
+        </div>
+
+        <form class="flex flex-col" [formGroup]="passwordForm">
+            <label class="mb-2 text-sm font-medium text-main-text-color"
+                for="new-password">
+                New Password
+            </label>
+            <input
+                id="new-password"
+                type="password"
+                formControllerName="password"
+                placeholder="••••••••"
+                class="h-12 w-full border border-[#E2E8F0] px-4 text-sm text-main-text-color outline-none transition-colors placeholder:text-[#98A2B3] focus:border-main-color">
+
+            <label class="mb-2 mt-5 text-sm font-medium text-main-text-color"
+                for="confirm-password">
+                Confirm New Password
+            </label>
+            <input
+                id="confirm-password"
+                type="password"
+                formControlName="rePassword"
+                placeholder="••••••••"
+                class="h-12 w-full border border-[#E2E8F0] px-4 text-sm text-main-text-color outline-none transition-colors placeholder:text-[#98A2B3] focus:border-main-color">
+
+            <button
+                type="button"
+                (click)="RestThePassword()"
+                class="mt-6 w-full cursor-pointer bg-main-color px-4 py-3 font-medium text-white transition-colors hover:bg-blue-700">
+                Reset Password
+            </button>
+
+            <p class="mt-4 text-center text-sm text-sec-text-color">
+                Don’t have an account?
+                <a href="#"
+                    class="font-medium text-main-color hover:underline">Create
+                    yours</a>
+            </p>
+        </form>
+        }
+        }
+    </div>
+</section>
